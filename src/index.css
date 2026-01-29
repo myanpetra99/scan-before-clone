@@ -1,0 +1,683 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Patrick+Hand&family=Permanent+Marker&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Doodle Comic Manga Theme */
+
+@layer base {
+  :root {
+    /* Light mode - vibrant manga style */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 8%;
+
+    --card: 50 40% 98%;
+    --card-foreground: 240 10% 8%;
+
+    --popover: 50 40% 98%;
+    --popover-foreground: 240 10% 8%;
+
+    --primary: 350 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 85% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 50 20% 90%;
+    --muted-foreground: 240 5% 35%;
+
+    --accent: 50 80% 55%;
+    --accent-foreground: 240 10% 8%;
+
+    --destructive: 0 90% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 15% 15%;
+    --input: 240 15% 15%;
+    --ring: 350 90% 55%;
+
+    --radius: 0.125rem;
+
+    /* Risk colors - vibrant comic style */
+    --risk-low: 145 85% 35%;
+    --risk-medium: 45 100% 50%;
+    --risk-high: 0 90% 50%;
+
+    /* Terminal/code colors */
+    --terminal-bg: 240 25% 6%;
+    --terminal-text: 145 100% 65%;
+    --code-string: 45 100% 60%;
+    --code-keyword: 280 75% 65%;
+
+    /* Comic accents */
+    --comic-yellow: 50 100% 50%;
+    --comic-cyan: 185 95% 45%;
+    --comic-magenta: 320 90% 55%;
+    --comic-orange: 25 100% 55%;
+    --comic-pink: 340 90% 65%;
+    --comic-lime: 80 90% 45%;
+    --comic-purple: 275 85% 55%;
+    --comic-teal: 175 80% 40%;
+    --comic-blue: 220 90% 55%;
+    --comic-indigo: 245 80% 60%;
+    --comic-rose: 355 85% 60%;
+    --comic-sky: 200 95% 55%;
+    --comic-amber: 38 100% 50%;
+
+    /* Sidebar */
+    --sidebar-background: 50 30% 94%;
+    --sidebar-foreground: 240 10% 8%;
+    --sidebar-primary: 350 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 50 40% 88%;
+    --sidebar-accent-foreground: 240 10% 8%;
+    --sidebar-border: 240 15% 15%;
+    --sidebar-ring: 350 90% 55%;
+  }
+
+  .dark {
+    /* Dark mode - noir manga with neon accents */
+    --background: 240 20% 4%;
+    --foreground: 50 30% 95%;
+
+    --card: 240 18% 8%;
+    --card-foreground: 50 30% 95%;
+
+    --popover: 240 18% 6%;
+    --popover-foreground: 50 30% 95%;
+
+    --primary: 350 95% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 90% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 15% 15%;
+    --muted-foreground: 50 15% 55%;
+
+    --accent: 50 85% 55%;
+    --accent-foreground: 240 20% 4%;
+
+    --destructive: 0 95% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 50 25% 30%;
+    --input: 240 15% 18%;
+    --ring: 350 95% 60%;
+
+    /* Risk colors */
+    --risk-low: 145 90% 45%;
+    --risk-medium: 45 100% 55%;
+    --risk-high: 0 95% 55%;
+
+    /* Terminal/code colors */
+    --terminal-bg: 240 25% 3%;
+    --terminal-text: 145 100% 70%;
+    --code-string: 45 100% 65%;
+    --code-keyword: 280 85% 70%;
+
+    /* Comic accents */
+    --comic-yellow: 50 100% 55%;
+    --comic-cyan: 185 100% 50%;
+    --comic-magenta: 320 95% 60%;
+    --comic-orange: 25 100% 60%;
+    --comic-pink: 340 95% 70%;
+    --comic-lime: 80 95% 50%;
+    --comic-purple: 275 90% 65%;
+    --comic-teal: 175 85% 45%;
+    --comic-blue: 220 95% 60%;
+    --comic-indigo: 245 85% 65%;
+    --comic-rose: 355 90% 65%;
+    --comic-sky: 200 100% 60%;
+    --comic-amber: 38 100% 55%;
+
+    /* Sidebar */
+    --sidebar-background: 240 18% 6%;
+    --sidebar-foreground: 50 30% 95%;
+    --sidebar-primary: 350 95% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 15% 12%;
+    --sidebar-accent-foreground: 50 30% 95%;
+    --sidebar-border: 50 20% 25%;
+    --sidebar-ring: 350 95% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Patrick Hand', cursive, system-ui;
+  }
+
+  /* Custom doodle scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border: 3px solid hsl(var(--border));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border: 3px solid hsl(var(--border));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}
+
+@layer components {
+  /* Wobbly hand-drawn border effect */
+  .doodle-border {
+    position: relative;
+    border: 4px solid hsl(var(--border));
+    border-radius: 2px 8px 2px 12px;
+    box-shadow: 
+      5px 5px 0 hsl(var(--border)),
+      -2px -1px 0 hsl(var(--border));
+  }
+
+  .doodle-border::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 3px solid hsl(var(--border));
+    border-radius: 12px 2px 8px 2px;
+    transform: rotate(0.8deg);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Comic panel - manga style with sketchy edges */
+  .comic-panel {
+    @apply relative bg-card;
+    border: 5px solid hsl(var(--border));
+    border-radius: 4px 16px 4px 16px;
+    box-shadow: 
+      8px 8px 0 hsl(var(--border)),
+      inset 0 0 0 3px hsl(var(--card));
+    transform: rotate(-0.5deg);
+  }
+
+  .comic-panel::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border: 2px dashed hsl(var(--border) / 0.4);
+    border-radius: 8px 20px 8px 20px;
+    pointer-events: none;
+  }
+
+  .comic-panel:hover {
+    transform: rotate(0deg) scale(1.02) translateY(-4px);
+    box-shadow: 
+      12px 12px 0 hsl(var(--primary) / 0.5),
+      inset 0 0 0 3px hsl(var(--card));
+    transition: all 0.2s ease-out;
+  }
+
+  /* Speed lines - manga effect */
+  .speed-lines {
+    background: 
+      repeating-linear-gradient(
+        85deg,
+        transparent,
+        transparent 15px,
+        hsl(var(--border) / 0.15) 15px,
+        hsl(var(--border) / 0.15) 17px
+      );
+  }
+
+  /* Screentone/halftone pattern */
+  .halftone {
+    background-image: 
+      radial-gradient(circle, hsl(var(--foreground) / 0.12) 1.5px, transparent 1.5px);
+    background-size: 10px 10px;
+  }
+
+  /* Cross-hatch pattern */
+  .crosshatch {
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 4px,
+        hsl(var(--border) / 0.1) 4px,
+        hsl(var(--border) / 0.1) 5px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        hsl(var(--border) / 0.1) 4px,
+        hsl(var(--border) / 0.1) 5px
+      );
+  }
+
+  /* Action burst/starburst effect */
+  .action-burst {
+    position: relative;
+  }
+
+  .action-burst::before {
+    content: '💥';
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    font-size: 2.5rem;
+    animation: burst-bounce 1s ease-in-out infinite;
+    filter: drop-shadow(2px 2px 0 hsl(var(--border)));
+  }
+
+  @keyframes burst-bounce {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(10deg); }
+  }
+
+  /* Manga title style - hand drawn */
+  .manga-title {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.08em;
+    text-shadow: 
+      4px 4px 0 hsl(var(--border)),
+      -2px -2px 0 hsl(var(--border)),
+      2px -2px 0 hsl(var(--border)),
+      -2px 2px 0 hsl(var(--border)),
+      0 6px 0 hsl(var(--border) / 0.3);
+    transform: skewX(-2deg);
+  }
+
+  /* Marker/highlighter text */
+  .marker-text {
+    font-family: 'Permanent Marker', cursive;
+    letter-spacing: 0.02em;
+  }
+
+  /* Hand-written text style */
+  .handwritten {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1em;
+    letter-spacing: 0.01em;
+  }
+
+  /* Doodle underline */
+  .doodle-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .doodle-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0 5 Q 25 0, 50 5 T 100 5' stroke='%23000' stroke-width='3' fill='none'/%3E%3C/svg%3E") repeat-x;
+    background-size: 50px 8px;
+  }
+
+  /* Risk badge variants - doodle comic style */
+  .risk-badge-low {
+    @apply font-bold uppercase tracking-wider;
+    font-family: 'Bangers', cursive;
+    background: hsl(var(--risk-low) / 0.25);
+    color: hsl(var(--risk-low));
+    border: 4px solid hsl(var(--risk-low));
+    border-radius: 2px 10px 2px 10px;
+    box-shadow: 4px 4px 0 hsl(var(--risk-low) / 0.4);
+    transform: rotate(-2deg);
+  }
+
+  .risk-badge-medium {
+    @apply font-bold uppercase tracking-wider;
+    font-family: 'Bangers', cursive;
+    background: hsl(var(--risk-medium) / 0.25);
+    color: hsl(var(--risk-medium));
+    border: 4px solid hsl(var(--risk-medium));
+    border-radius: 10px 2px 10px 2px;
+    box-shadow: 4px 4px 0 hsl(var(--risk-medium) / 0.4);
+    transform: rotate(1deg);
+  }
+
+  .risk-badge-high {
+    @apply font-bold uppercase tracking-wider;
+    font-family: 'Bangers', cursive;
+    background: hsl(var(--risk-high) / 0.25);
+    color: hsl(var(--risk-high));
+    border: 4px solid hsl(var(--risk-high));
+    border-radius: 2px 10px 2px 10px;
+    box-shadow: 4px 4px 0 hsl(var(--risk-high) / 0.4);
+    transform: rotate(-1deg);
+    animation: danger-wobble 0.3s ease-in-out infinite;
+  }
+
+  @keyframes danger-wobble {
+    0%, 100% { transform: rotate(-1deg); }
+    25% { transform: rotate(-3deg) translateX(-2px); }
+    75% { transform: rotate(1deg) translateX(2px); }
+  }
+
+  /* Terminal/code block - CRT doodle effect */
+  .terminal-block {
+    @apply font-mono text-sm p-4 overflow-x-auto;
+    background: hsl(var(--terminal-bg));
+    color: hsl(var(--terminal-text));
+    border: 4px solid hsl(var(--terminal-text) / 0.6);
+    border-radius: 4px 12px 4px 12px;
+    box-shadow: 
+      6px 6px 0 hsl(var(--border)),
+      inset 0 0 30px hsl(var(--terminal-text) / 0.1);
+  }
+
+  .terminal-block::before {
+    content: '$ ';
+    color: hsl(var(--comic-lime));
+  }
+
+  .code-snippet {
+    @apply font-mono text-xs leading-relaxed overflow-x-auto;
+    background: hsl(var(--terminal-bg));
+    color: hsl(var(--terminal-text));
+    border: 3px solid hsl(var(--terminal-text) / 0.4);
+    border-radius: 2px 8px 2px 8px;
+  }
+
+  /* Scan pulse animation - manga style */
+  .scan-pulse {
+    animation: manga-pulse 0.8s ease-in-out infinite;
+  }
+
+  @keyframes manga-pulse {
+    0%, 100% {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+  }
+
+  /* Gradient text for hero - comic explosion */
+  .gradient-text {
+    @apply bg-clip-text text-transparent font-bold;
+    font-family: 'Bangers', cursive;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--comic-orange)) 30%,
+      hsl(var(--comic-yellow)) 50%,
+      hsl(var(--comic-orange)) 70%,
+      hsl(var(--primary)) 100%
+    );
+    animation: gradient-shift 3s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Card hover - comic pop */
+  .card-hover {
+    @apply transition-all duration-200;
+    border: 4px solid hsl(var(--border));
+    border-radius: 4px 12px 4px 12px;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px) rotate(1deg);
+    box-shadow: 8px 8px 0 hsl(var(--primary) / 0.6);
+    border-color: hsl(var(--primary));
+  }
+
+  /* Glow effect - neon manga */
+  .glow-primary {
+    box-shadow: 
+      0 0 15px hsl(var(--primary) / 0.6),
+      0 0 40px hsl(var(--primary) / 0.3),
+      0 0 60px hsl(var(--primary) / 0.1);
+    animation: neon-flicker 2s ease-in-out infinite;
+  }
+
+  @keyframes neon-flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    93% { opacity: 0.8; }
+    94% { opacity: 1; }
+    96% { opacity: 0.9; }
+    97% { opacity: 1; }
+  }
+
+  /* Speech bubble - manga style */
+  .speech-bubble {
+    position: relative;
+    @apply bg-card;
+    border: 4px solid hsl(var(--border));
+    border-radius: 20px 20px 20px 4px;
+    box-shadow: 5px 5px 0 hsl(var(--border));
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: hsl(var(--border));
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10px;
+  }
+
+  .speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border: 14px solid transparent;
+    border-top-color: hsl(var(--card));
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -7px;
+    z-index: 1;
+  }
+
+  /* Comic SFX text style */
+  .comic-sfx {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    letter-spacing: 0.15em;
+    transform: rotate(-8deg) skewX(-5deg);
+    text-shadow: 
+      5px 5px 0 hsl(var(--comic-yellow)),
+      -3px -3px 0 hsl(var(--border)),
+      8px 8px 0 hsl(var(--border) / 0.3);
+    animation: sfx-pop 0.5s ease-out;
+  }
+
+  @keyframes sfx-pop {
+    0% { transform: rotate(-8deg) skewX(-5deg) scale(0); opacity: 0; }
+    60% { transform: rotate(-8deg) skewX(-5deg) scale(1.2); }
+    100% { transform: rotate(-8deg) skewX(-5deg) scale(1); opacity: 1; }
+  }
+
+  /* Doodle button */
+  .doodle-button {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.1em;
+    border: 4px solid hsl(var(--border));
+    border-radius: 4px 12px 4px 12px;
+    box-shadow: 5px 5px 0 hsl(var(--border));
+    transition: all 0.15s ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .doodle-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 40%, hsl(var(--foreground) / 0.1) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .doodle-button:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 hsl(var(--primary));
+  }
+
+  .doodle-button:hover::before {
+    transform: translateX(100%);
+  }
+
+  .doodle-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 hsl(var(--border));
+  }
+
+  /* Ink splatter decorations */
+  .ink-splatter-1::before { content: '💥'; }
+  .ink-splatter-2::before { content: '⚡'; }
+  .ink-splatter-3::before { content: '💢'; }
+  .ink-splatter-4::before { content: '✨'; }
+  .ink-splatter-5::before { content: '🔥'; }
+
+  [class^="ink-splatter"]::before {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: float-rotate 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes float-rotate {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
+  }
+
+  /* Zigzag divider */
+  .zigzag-divider {
+    height: 20px;
+    background: 
+      linear-gradient(135deg, hsl(var(--background)) 25%, transparent 25%) -10px 0,
+      linear-gradient(225deg, hsl(var(--background)) 25%, transparent 25%) -10px 0,
+      linear-gradient(315deg, hsl(var(--background)) 25%, transparent 25%),
+      linear-gradient(45deg, hsl(var(--background)) 25%, transparent 25%);
+    background-size: 20px 20px;
+    background-color: hsl(var(--border));
+  }
+}
+
+@layer utilities {
+  /* Risk label colors */
+  .text-risk-low {
+    color: hsl(var(--risk-low));
+    font-weight: 700;
+  }
+
+  .text-risk-medium {
+    color: hsl(var(--risk-medium));
+    font-weight: 700;
+  }
+
+  .text-risk-high {
+    color: hsl(var(--risk-high));
+    font-weight: 700;
+  }
+
+  .bg-risk-low {
+    background-color: hsl(var(--risk-low));
+  }
+
+  .bg-risk-medium {
+    background-color: hsl(var(--risk-medium));
+  }
+
+  .bg-risk-high {
+    background-color: hsl(var(--risk-high));
+  }
+
+  .border-risk-low {
+    border-color: hsl(var(--risk-low));
+  }
+
+  .border-risk-medium {
+    border-color: hsl(var(--risk-medium));
+  }
+
+  .border-risk-high {
+    border-color: hsl(var(--risk-high));
+  }
+
+  /* Terminal background */
+  .bg-terminal {
+    background-color: hsl(var(--terminal-bg));
+    color: hsl(var(--terminal-text));
+  }
+
+  /* Comic accent colors */
+  .text-comic-yellow { color: hsl(var(--comic-yellow)); }
+  .text-comic-cyan { color: hsl(var(--comic-cyan)); }
+  .text-comic-magenta { color: hsl(var(--comic-magenta)); }
+  .text-comic-orange { color: hsl(var(--comic-orange)); }
+  .text-comic-pink { color: hsl(var(--comic-pink)); }
+  .text-comic-lime { color: hsl(var(--comic-lime)); }
+
+  .bg-comic-yellow { background-color: hsl(var(--comic-yellow)); }
+  .bg-comic-cyan { background-color: hsl(var(--comic-cyan)); }
+  .bg-comic-magenta { background-color: hsl(var(--comic-magenta)); }
+  .bg-comic-orange { background-color: hsl(var(--comic-orange)); }
+  .bg-comic-pink { background-color: hsl(var(--comic-pink)); }
+  .bg-comic-lime { background-color: hsl(var(--comic-lime)); }
+
+  /* Wobbly animation */
+  .wobble {
+    animation: wobble 2s ease-in-out infinite;
+  }
+
+  @keyframes wobble {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+  }
+
+  /* Bounce-in animation */
+  .bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes bounce-in {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Shake animation */
+  .shake-it {
+    animation: shake-it 0.4s ease-in-out;
+  }
+
+  @keyframes shake-it {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px) rotate(-2deg); }
+    40% { transform: translateX(8px) rotate(2deg); }
+    60% { transform: translateX(-6px) rotate(-1deg); }
+    80% { transform: translateX(6px) rotate(1deg); }
+  }
+}
