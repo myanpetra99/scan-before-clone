@@ -1,4 +1,3 @@
-//insert SCAN BEFORE CLONE LOGO
 ![SCAN BEFORE CLONE LOGO](https://raw.githubusercontent.com/myanpetra99/scan-before-clone/main/sbyc.svg)
 
 
