@@ -62,8 +62,8 @@ const Index = () => {
         <header className="border-b-4 border-border backdrop-blur-sm bg-background/90 fixed top-0 left-0 right-0 z-50">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3 group">
-              <img src="/sbyc.svg" alt="SByC Logo" className="h-12 w-auto" />
-              <h1 className="font-display text-2xl tracking-wider text-black">
+              <img src={`${import.meta.env.BASE_URL}sbyc.svg`} alt="SByC Logo" className="h-12 w-auto" />
+            </div>  <h1 className="font-display text-2xl tracking-wider text-black">
                 Scan Before You Clone
               </h1>
             </div>
