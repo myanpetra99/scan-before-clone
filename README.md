@@ -1,33 +1,50 @@
-![SCAN BEFORE CLONE LOGO](https://raw.githubusercontent.com/myanpetra99/scan-before-clone/main/sbyc.svg)
+![Scan Before Clone Logo](https://raw.githubusercontent.com/myanpetra99/scan-before-clone/main/sbyc.svg)
 
+# 🔍 Scan Before Clone
 
-SCAN BEFORE CLONE IS A TOOL THAT ALLOWS YOU TO SCAN PUBLIC REPOSITORIES BEFORE CLONING THEM.
+**Scan Before Clone** is a tool that helps you analyze public repositories **before cloning** them to your local machine.
 
-THE PURPOSE OF SCAN BEFORE CLONE IS TO HELP YOU AVOID CLONING REPOSITORIES THAT MAY CONTAIN MALICIOUS THING SUCH AS SUSPICIOUS SCRIPTS, EXECUTABLES, AND CONFIGURATION FILES.
+Its purpose is to reduce the risk of downloading repositories that may contain **malicious or suspicious content**, such as harmful scripts, executables, or dangerous configuration files.
 
-IT USES A SET OF RULES TO IDENTIFY POTENTIAL MALICIOUS FILES. IF THE TOOL DETECTS ANY MALICIOUS PATTERN, IT WILL PROVIDE YOU WITH A WARNING AND ACCESS TO THE FILES.
+---
 
-YOU CAN THEN DECIDE WHETHER TO CLONE THE REPOSITORY OR NOT.
+## 🚨 How It Works
 
-PLEASE NOTE THAT SCAN BEFORE CLONE CURRENTLY USING STATIC ANALYSIS TECHNIQUES. THIS MEANS THAT IT MAY NOT DETECT ALL POSSIBLE MALICIOUS FILES OR EVEN IT MAY FALSE-POSITIVE.
+Scan Before Clone uses a set of detection rules to identify potentially malicious files in a repository.
 
-ALSO, PLEASE BE AWARE THAT SCAN BEFORE CLONE IS A TOOL THAT IS PROVIDED "AS IS" WITHOUT ANY WARRANTY. THE AUTHORS AND CONTRIBUTORS OF SCAN BEFORE CLONE DISCLAIM ANY LIABILITY FOR ANY DAMAGES OR LOSSES THAT MAY RESULT FROM THE USE OF THE TOOL.
+If suspicious patterns are detected, the tool will:
 
+- ⚠️ Display a warning  
+- 📂 Show you the flagged files  
 
+You can then decide whether the repository is safe to clone.
 
-TO USE SCAN BEFORE CLONE, YOU CAN FOLLOW THESE STEPS:
+---
 
-1. CLONE THE SCAN BEFORE CLONE REPOSITORY: `git clone https://github.com/myanpetra99/scan-before-clone.git`
-2. NAVIGATE TO THE SCAN BEFORE CLONE DIRECTORY: `cd scan-before-clone`
-3. INSTALL THE DEPENDENCIES: `npm install`
-4. RUN THE TOOL: `npm start`
+## ⚠️ Limitations
 
+Scan Before Clone currently uses **static analysis techniques**. This means:
 
-ROADMAP:
-1. ADD GITHUB OAUTH SUPPORT
-2. SUPPORT SCANNING PRIVATE REPOSITORIES
-3. ADD SUPPORT FOR OTHER VERSION CONTROL SYSTEMS SUCH AS GITLAB AND BITBUCKET
-4. INTEGRATION WITH AI TO HELP IDENTIFY MALICIOUS CODE 
+- It may **not detect all malicious content**
+- It may sometimes produce **false positives**
 
+Always review flagged files carefully and use your own judgment.
 
-ALWAYS BE CAREFUL WHEN CLONING REPOSITORIES!
+---
+
+## 🛠 Installation & Usage
+
+Follow these steps to get started:
+
+```bash
+# 1. Clone the Scan Before Clone repository
+git clone https://github.com/myanpetra99/scan-before-clone.git
+
+# 2. Navigate into the project directory
+cd scan-before-clone
+
+# 3. Install dependencies
+npm install
+
+# 4. Run the tool
+npm start
