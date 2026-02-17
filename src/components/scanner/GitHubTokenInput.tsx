@@ -11,13 +11,27 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useGitHubToken } from "@/hooks/useGitHubToken";
-import { Key, Check, X, ExternalLink } from "lucide-react";
+import { Key, Check, X, ExternalLink, Github } from "lucide-react";
 
 export function GitHubTokenInput() {
   const { token, isAuthenticated, rateLimit, setToken, clearToken } = useGitHubToken();
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleOAuthLogin = () => {
+    const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
+    if (!clientId) {
+      setError("GitHub Client ID is not configured.");
+      return;
+    }
+    const baseUrl = import.meta.env.BASE_URL;
+    // Ensure we don't have double slashes if BASE_URL is "/"
+    const path = baseUrl.endsWith('/') ? `${baseUrl}auth/callback` : `${baseUrl}/auth/callback`;
+    const redirectUri = `${window.location.origin}${path}`;
+    const scope = "repo read:org";
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+  };
 
   const handleSave = () => {
     setError(null);
@@ -39,29 +53,42 @@ export function GitHubTokenInput() {
   const maskedToken = token ? `${token.slice(0, 8)}...${token.slice(-4)}` : null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
+    <div className="flex items-center gap-2">
+      {!isAuthenticated && (
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
-          className={`gap-2 font-mono text-xs ${
-            isAuthenticated
-              ? "text-green-500 hover:text-green-400"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
+          className="gap-2 font-mono text-xs"
+          onClick={handleOAuthLogin}
         >
-          <Key className="w-3.5 h-3.5" />
-          {isAuthenticated ? (
-            <>
-              <Check className="w-3 h-3" />
-              <span>{rateLimit.toLocaleString()}/hr</span>
-            </>
-          ) : (
-            <span>60/hr limit</span>
-          )}
+          <Github className="w-3.5 h-3.5" />
+          Connect
         </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      )}
+
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogTrigger asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            className={`gap-2 font-mono text-xs ${
+              isAuthenticated
+                ? "text-green-500 hover:text-green-400"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <Key className="w-3.5 h-3.5" />
+            {isAuthenticated ? (
+              <>
+                <Check className="w-3 h-3" />
+                <span>{rateLimit.toLocaleString()}/hr</span>
+              </>
+            ) : (
+              <span>60/hr limit</span>
+            )}
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Key className="w-5 h-5" />
@@ -88,6 +115,26 @@ export function GitHubTokenInput() {
             </div>
           ) : (
             <div className="space-y-3">
+              <Button
+                variant="outline"
+                className="w-full gap-2"
+                onClick={handleOAuthLogin}
+              >
+                <Github className="w-4 h-4" />
+                Connect with GitHub
+              </Button>
+
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">
+                    Or manually enter token
+                  </span>
+                </div>
+              </div>
+
               <Input
                 type="password"
                 placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
@@ -138,6 +185,7 @@ export function GitHubTokenInput() {
           )}
         </DialogFooter>
       </DialogContent>
-    </Dialog>
+      </Dialog>
+    </div>
   );
 }

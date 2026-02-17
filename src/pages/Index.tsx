@@ -7,6 +7,8 @@ import { DetectionCategories } from "@/components/home/DetectionCategories";
 import { GitHubTokenInput } from "@/components/scanner/GitHubTokenInput";
 import { useScannerStatic } from "@/hooks/useScannerStatic";
 
+import { Link } from "react-router-dom";
+
 const Index = () => {
   const {
     scan,
@@ -61,12 +63,12 @@ const Index = () => {
       <div className="relative pt-24">
         <header className="border-b-4 border-border backdrop-blur-sm bg-background/90 fixed top-0 left-0 right-0 z-50">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-3 group">
+            <Link to="/" onClick={reset} className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
               <img src={`${import.meta.env.BASE_URL}sbyc.svg`} alt="SByC Logo" className="h-12 w-auto" />
               <h1 className="font-display text-2xl tracking-wider text-black">
                 Scan Before You Clone
               </h1>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-3">
               <GitHubTokenInput />
@@ -94,7 +96,7 @@ const Index = () => {
 
               <div className="speech-bubble bg-card p-8 max-w-2xl mx-auto mb-14">
                 <p className="text-xl text-muted-foreground handwritten leading-relaxed">
-                  Analyze any public GitHub repo for
+                  Analyze any public/private GitHub repo for
                   <span className="text-comic-orange font-bold">
                     {" "}
                     suspicious patterns
@@ -178,9 +180,9 @@ const Index = () => {
                       Privacy First
                     </h3>
                     <p className="text-base text-muted-foreground handwritten leading-relaxed">
-                      We only access{" "}
+                      We access{" "}
                       <span className="text-primary font-bold">
-                        public repository data
+                        repository data
                       </span>{" "}
                       through GitHub's API.
                       <span className="text-comic-cyan font-bold">
@@ -210,9 +212,8 @@ const Index = () => {
                         {" "}
                         Tip:
                       </span>{" "}
-                      Add your GitHub Personal Access Token in the top right
-                      corner to increase your limits. We are working on GitHub
-                      OAuth integration!
+                      Add your GitHub Personal Access Token or login via GitHub in the top right
+                      corner to increase your limits.
                     </p>
                   </div>
                 </div>

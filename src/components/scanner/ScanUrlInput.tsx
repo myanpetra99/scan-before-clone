@@ -41,7 +41,7 @@ export function ScanUrlInput({ onSubmit, isLoading }: ScanUrlInputProps) {
               <Github className="w-7 h-7 text-primary" />
             </div>
             <p className="text-base text-muted-foreground handwritten">
-              Enter any public GitHub repository URL 🔍
+              Enter any public/private GitHub repository URL 🔍
             </p>
           </div>
           
