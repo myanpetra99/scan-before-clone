@@ -44,8 +44,8 @@ Follow these steps to use Scan Before Clone:
 
 ## Roadmap
 
-- [ ] Add GitHub OAuth support
-- [ ] Support scanning private repositories
+- [x] Add GitHub OAuth support
+- [x] Support scanning private repositories
 - [ ] Add support for other version control systems (GitLab, Bitbucket)
 - [ ] AI integration to help identify malicious code
 
