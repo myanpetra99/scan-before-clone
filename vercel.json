@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    { "source": "/", "destination": "/api/health", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
