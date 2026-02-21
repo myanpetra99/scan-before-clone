@@ -1,0 +1,16 @@
+{
+  "name": "Scan Before You Clone",
+  "short_name": "SByC",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "Securely scan public & private GitHub repositories for malware, secrets, and vulnerabilities before cloning.",
+  "icons": [
+    {
+      "src": "sbyc.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
